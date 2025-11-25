@@ -71,5 +71,5 @@ If you want to contribute to HiveMQ Hello World Extension, see the link:CONTRIBU
 
 == License
 
-HiveMQ Hello World Extension is licensed under the `APACHE LICENSE, VERSION 2.0`.
+HiveMQ Hello Client Metric Extension is licensed under the `APACHE LICENSE, VERSION 2.0`.
 A copy of the license can be found link:LICENSE[here].
