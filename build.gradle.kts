@@ -5,19 +5,24 @@ plugins {
 }
 
 group = "com.hivemq.extensions"
-description = "HiveMQ 4 Hello World Extension - a simple reference for all extension developers"
+description = "HiveMQ 4 Hello Client Metric Extension - adds com.hivemq.client1.message-queue-size metric."
 
 hivemqExtension {
-    name = "Hello World Extension"
-    author = "HiveMQ"
+    name = "Hello Client Metric Extension"
+    author = "Dasha Samkova"
     priority = 1000
     startPriority = 1000
-    mainClass = "$group.helloworld.HelloWorldMain"
+    mainClass = "$group.helloclientmetric.HelloClientMetricMain"
     sdkVersion = "$version"
 
     resources {
         from("LICENSE")
     }
+}
+
+dependencies {
+    implementation("com.google.code.gson:gson:${property("gson.version")}")
+    implementation("com.squareup.okhttp3:okhttp:${property("okhttp.version")}")
 }
 
 @Suppress("UnstableApiUsage")
@@ -37,6 +42,7 @@ testing {
                 implementation(libs.hivemq.mqttClient)
                 implementation(libs.testcontainers.junitJupiter)
                 implementation(libs.testcontainers.hivemq)
+                implementation("com.squareup.okhttp3:okhttp:${property("okhttp.version")}")
                 runtimeOnly(libs.logback.classic)
             }
         }
@@ -51,7 +57,7 @@ license {
 /* ******************** debugging ******************** */
 
 tasks.prepareHivemqHome {
-    hivemqHomeDirectory = file("/your/path/to/hivemq-<VERSION>")
+    hivemqHomeDirectory = file("/Users/ds/hivemq/hivemq-4.46.0")
 }
 
 tasks.runHivemqWithExtension {
