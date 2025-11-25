@@ -37,12 +37,14 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * This is the main class of the extension,
- * which is instantiated either during the HiveMQ start up process (if extension is enabled)
- * or when HiveMQ is already started by enabling the extension.
+ * This is the main class of the extension.
+ * <p>
+ * It periodically fetches the message queue size for a specific client ({@code client1})
+ * via the HiveMQ REST API and exposes it as a HiveMQ metric named
+ * {@code com.hivemq.client1.message-queue-size}.
  *
- * @author Florian Limpöck
- * @since 4.0.0
+ * @author Dasha Samkova
+ * @since 4.46.0
  */
 public class HelloClientMetricMain implements ExtensionMain {
 
